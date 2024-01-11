@@ -1,5 +1,4 @@
 
-
 // Estraggo la funzione createApp dall'oggetto Vue
 const {createApp} = Vue;
 
@@ -182,9 +181,39 @@ createApp({
         ],
 
         index: 0,
+        inputMessage: '',
 
     }
-  }
 
+  },
+
+  methods: {
+
+ 
+    // Funzione stampa nuovo messaggio in send
+    newMessage(){
+    
+      const newMessage = {
+        message: this.inputMessage,
+        status: 'sent'
+        }
+        this.inputMessage= ''
+        this.contacts[this.index].messages.push(newMessage);
+        this.responseMessage();
+        },
+    
+    responseMessage(){
+
+        setTimeout(() => {
+        const message = {
+            message: 'Ok',
+            status: 'received'
+        }
+        this.contacts[this.index].messages.push(message);
+        }, 1000);
+    
+      },
+    },
+   
 // Monto l'istanza di Vue in pagina
 }).mount("#app")
