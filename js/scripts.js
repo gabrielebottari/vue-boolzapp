@@ -192,15 +192,25 @@ createApp({
 
  
         // Funzione stampa nuovo messaggio in send
-        newMessage(){
-    
-            const newMessage = {
-                message: this.inputMessage,
-                status: 'sent'
+        newMessage() {
+
+            //verifico se il messaggio non è vuoto prima di procedere
+            if (this.inputMessage.trim() !== '') {
+
+                const newMessage = {
+                    message: this.inputMessage,
+                    status: 'sent'
+                };
+              
+              //pulisco il campo di input dopo l'invio
+              this.inputMessage = '';
+              
+              //aggiungo il nuovo messaggio all'array dei messaggi
+              this.contacts[this.index].messages.push(newMessage);
+              
+              //chiamo a responseMessage() per gestire eventuali risposte automatiche
+              this.responseMessage();
             }
-            this.inputMessage= ''
-            this.contacts[this.index].messages.push(newMessage);
-            this.responseMessage();
         },
     
         responseMessage(){
@@ -227,6 +237,10 @@ createApp({
         visibleContacts() {
             return this.contacts.filter(contact => contact.visible);
         },
+
+        deleteMessage(i){
+            this.contacts[this.index].messages.splice(i,1);
+          },
 
     },
    
