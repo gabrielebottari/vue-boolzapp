@@ -151,6 +151,11 @@ ul .info-user .last-message {
     font-size: 0.8em;
     margin-bottom: 10px;
 }
+
+.sent {
+    justify-content: flex-end;
+    display: flex;
+}
   
 .sent p {
     background-color: #D5F9BA;

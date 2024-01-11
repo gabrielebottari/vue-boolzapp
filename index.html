@@ -21,7 +21,7 @@
     
             <div class="container d-flex row g-0">
         
-                <!-- sezione aside (sinistra) -->
+                <!-- sezione sinistra -->
                 <div class="col-4">
 
                     <div class="top-bar d-flex justify-content-between">
@@ -55,13 +55,11 @@
 
                         <!-- barra di ricerca -->
                         <div class="search-bar d-flex align-items-center">
-                            <!-- <div class="search-icon"> -->
+                           
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <!-- </div> -->
-
-                            <!-- <div class="search-input"> -->
+                           
                             <input type="text" placeholder="Cerca o Inizia una nuova chat">
-                            <!-- </div> -->
+                
                         </div>
 
                     </div>
@@ -69,7 +67,7 @@
                     <div class="contact-list">
 
                         <ul>
-                            <li class="d-flex align-items-center " v-for="contact in contacts">
+                            <li class="d-flex align-items-center " v-for="(contact, i) in contacts" :class="{active : index == i}" @click="index = i">
 
                                 <div class="user">
                                     <img :src="contact.avatar">
@@ -89,7 +87,7 @@
         
                 </div>
         
-                <!-- sezione main (destra) -->
+                <!-- sezione destra -->
                 <div class="col-8">
             
                     <div class="top-bar d-flex justify-content-between ">
@@ -99,8 +97,8 @@
                             <img src="img/avatar_1.jpg">
 
                             <div class="info-user">
-                                <div class="name-user">Michele</div>
-                                <div class="last-access">Ultimo accesso oggi alle 12:00</div>
+                                <div class="name-user">{{contacts[index].name}}</div>
+                                <div class="last-access">Ultimo accesso ore 12:00</div>
                             </div>
 
                         </div>
@@ -117,19 +115,10 @@
             
                     <div class="main-chat p-3">
             
-                        <div class="sent d-flex justify-content-end">
-                            <p>Hai portato a spasso il cane?</p>
+                        <div v-for="text in contacts[index].messages" :class="text.status">
+                            <p>{{ text.message }}</p>
                         </div>
 
-                        <div class="sent d-flex justify-content-end">
-                            <p>Ricordati di stendere i panni</p>
-                        </div>
-
-                        <div class="received d-flex">
-                            <p>Tutto Fatto!</p>
-                        </div>
-            
-            
                     </div>
             
                     <div class="footer-bar d-flex row align-items-center justify-content-around">
