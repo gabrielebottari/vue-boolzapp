@@ -58,37 +58,43 @@
                            
                             <i class="fa-solid fa-magnifying-glass"></i>
                            
-                            <input type="text" placeholder="Cerca o Inizia una nuova chat">
+                            <input v-model="contactSearch" @keyup="search" type="text" placeholder="Cerca o Inizia una nuova chat">
                 
                         </div>
 
                     </div>
             
-                    <div class="contact-list">
+                    <div class="contact-list p-2" v-if="contacts.some(contact => contact.visible)">
 
-                        <ul>
-                            <li class="d-flex align-items-center " v-for="(contact, i) in contacts" :class="{active : index == i}" @click="index = i">
+                            <div class="d-flex align-items-center p-1" 
+                                v-for="(contact, i) in contacts" :class="{active : index == i}" 
+                                @click="index = i">
 
-                                <div class="user">
-                                    <img :src="contact.avatar">
-                                </div>
-
-                                <div class="info-user">
-                                    <div>{{contact.name}}</div>
-                                    <div v-for="(lastMessage, index) in contact.messages" class="last-message">
-                                        <div v-if="index === contact.messages.length -1">{{lastMessage.message}}</div>
+                                <div class="contact-container d-flex align-items-center px-2"   v-if="contact.visible">
+                                    
+                                    <div class="user">
+                                        <img :src="contact.avatar">
                                     </div>
+
+                                    <div class="info-user">
+                                        <div>{{contact.name}}</div>
+                                        <div v-for="(lastMessage, index) in contact.messages" class="last-message">
+                                            <div v-if="index === contact.messages.length -1">{{lastMessage.message}}</div>
+                                        </div>
+                                    </div>
+                                
                                 </div>
 
-                            </li>
-                        </ul>
+                            </div>
 
                     </div>
+
+                    <p v-else class="p-5 text-center fs-5">Nessun contatto trovato <i class="fa-solid fa-magnifying-glass"></i></p>
         
                 </div>
         
                 <!-- sezione destra -->
-                <div class="col-8">
+                <div class="col-8 position-relative">
             
                     <div class="top-bar d-flex justify-content-between ">
 

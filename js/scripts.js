@@ -182,6 +182,7 @@ createApp({
 
         index: 0,
         inputMessage: '',
+        contactSearch: '',
 
     }
 
@@ -190,29 +191,43 @@ createApp({
   methods: {
 
  
-    // Funzione stampa nuovo messaggio in send
-    newMessage(){
+        // Funzione stampa nuovo messaggio in send
+        newMessage(){
     
-      const newMessage = {
-        message: this.inputMessage,
-        status: 'sent'
-        }
-        this.inputMessage= ''
-        this.contacts[this.index].messages.push(newMessage);
-        this.responseMessage();
+            const newMessage = {
+                message: this.inputMessage,
+                status: 'sent'
+            }
+            this.inputMessage= ''
+            this.contacts[this.index].messages.push(newMessage);
+            this.responseMessage();
         },
     
-    responseMessage(){
+        responseMessage(){
 
-        setTimeout(() => {
-        const message = {
-            message: 'Ok',
-            status: 'received'
-        }
-        this.contacts[this.index].messages.push(message);
-        }, 1000);
+            setTimeout(() => {
+            const message = {
+                message: 'Ok',
+                status: 'received'
+                }
+            this.contacts[this.index].messages.push(message);
+            }, 1000);
     
-      },
+        },
+
+        search(){
+
+            this.contacts.forEach(contact => {
+            contact.visible = contact.name.toLowerCase().includes(this.contactSearch.toLowerCase())
+            console.log(this.contactSearch)
+            })
+
+        },
+
+        visibleContacts() {
+            return this.contacts.filter(contact => contact.visible);
+        },
+
     },
    
 // Monto l'istanza di Vue in pagina
