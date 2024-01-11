@@ -18,9 +18,132 @@
     <body>
         
         <div id="app">
-            <h1>
-                {{ message }}
-            </h1>
+    
+            <div class="container d-flex row g-0">
+        
+                <!-- sezione aside (sinistra) -->
+                <div class="col-4">
+
+                    <div class="top-bar d-flex justify-content-between">
+
+                        <div class="user d-flex align-items-center">
+                            <img src="img/avatar_io.jpg">
+                            <span class="name-user">Sofia</span>
+                        </div>
+
+                        <div class="icon-user d-flex align-items-center">
+                            <i class="fa-sharp fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+            
+                    </div>
+            
+                    <div class="sidebar">
+                
+                        <!-- notifiche -->
+                        <div class="notify d-flex align-items-center p-1">
+
+                            <i class="fa-solid fa-bell-slash"></i>
+
+                            <div class="notify-info">
+                                <div>Ricevi notifiche di nuovi messaggi</div>
+                                <div>Attiva notifiche desktop</div>
+                            </div>
+
+                        </div>
+
+                        <!-- barra di ricerca -->
+                        <div class="search-bar d-flex align-items-center">
+                            <!-- <div class="search-icon"> -->
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <!-- </div> -->
+
+                            <!-- <div class="search-input"> -->
+                            <input type="text" placeholder="Cerca o Inizia una nuova chat">
+                            <!-- </div> -->
+                        </div>
+
+                    </div>
+            
+                    <div class="contact-list">
+
+                        <ul>
+                            <li class="d-flex align-items-center " v-for="contact in contacts">
+
+                                <div class="user">
+                                    <img :src="contact.avatar">
+                                </div>
+
+                                <div class="info-user">
+                                    <div>{{contact.name}}</div>
+                                    <div v-for="(lastMessage, index) in contact.messages" class="last-message">
+                                        <div v-if="index === contact.messages.length -1">{{lastMessage.message}}</div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+
+                    </div>
+        
+                </div>
+        
+                <!-- sezione main (destra) -->
+                <div class="col-8">
+            
+                    <div class="top-bar d-flex justify-content-between ">
+
+                        <div class="user active d-flex align-items-center ">
+
+                            <img src="img/avatar_1.jpg">
+
+                            <div class="info-user">
+                                <div class="name-user">Michele</div>
+                                <div class="last-access">Ultimo accesso oggi alle 12:00</div>
+                            </div>
+
+                        </div>
+
+                        <div class="icon-user d-flex align-items-center ">
+
+                            <i class="fa-sharp fa-solid fa-search"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                        </div>
+                    
+                    </div>
+            
+                    <div class="main-chat p-3">
+            
+                        <div class="sent d-flex justify-content-end">
+                            <p>Hai portato a spasso il cane?</p>
+                        </div>
+
+                        <div class="sent d-flex justify-content-end">
+                            <p>Ricordati di stendere i panni</p>
+                        </div>
+
+                        <div class="received d-flex">
+                            <p>Tutto Fatto!</p>
+                        </div>
+            
+            
+                    </div>
+            
+                    <div class="footer-bar d-flex row align-items-center justify-content-around">
+
+                        <i class="fa-regular fa-face-smile col-1 ps-4"></i>
+                        <input type="text" class="p-2 w-75 col-10" placeholder="Scrivi un messaggio">
+                        <i class="fa-solid fa-microphone col-1"></i>
+
+                    </div>
+            
+                </div>
+        
+            </div>
+        
         </div>
 
         <!-- Vue -->

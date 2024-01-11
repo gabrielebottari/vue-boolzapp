@@ -10,3 +10,170 @@
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+    GENERAL
+*/
+
+img {
+    border-radius: 50%;
+    width: 40px;
+    margin: 0 15px;
+}
+
+.icon-user i {
+    color: #B1B1B1;
+    margin-right: 20px;
+}
+
+.top-bar .user span{
+    margin-left: 10px;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #DBDBD2;
+    background: linear-gradient(0deg, #DBDBD2 85%, #009688 85%); 
+}
+  
+.container {
+    background-color: #EAEAEA;
+}
+  
+.top-bar {
+    height: 60px;
+    background-color: #EAEAEA;
+}
+  
+.main-chat {
+    height: calc(100% - 120px);
+    background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
+}
+
+ul {
+    padding: 0;
+}
+
+.notify {
+    background-color: #8EDAFC;
+    height: 60px;
+}
+  
+.notify i {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    padding: 15px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    color: #8EDAFC;
+}
+  
+.notify .notify-info div {
+    font-size: 0.8em;
+    margin: 2px 10px;
+}
+  
+.notify .notify-info div:first-child {
+    font-weight: 700;
+}
+  
+.notify .notify-info div:last-child {
+    font-weight: 500;
+    color: grey;
+    text-decoration: underline;
+}
+  
+.sidebar .search-bar {
+    background-color: #F9F9F9;
+    height: 50px;
+}
+  
+.sidebar .search-bar input {
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    margin-right: 5px;
+    color: #B1B1B1;
+    font-weight: 600;
+    font-size: 0.8em;
+}
+  
+.sidebar .search-bar i {
+    padding: 10px 15px;
+    margin-left: 5px;
+    background-color: #FFFFFF;
+    color: #B1B1B1;
+}
+  
+.contact-list {
+    overflow-y: scroll;
+    background-color: #FFFFFF;
+}
+  
+.contact-list li:hover {
+    background-color: #F9F9F9;
+}
+  
+.contact-list li {
+
+    list-style: none;
+    display: flex;
+    border-bottom: 2px solid #F9F9F9;
+    cursor: pointer;
+    padding: 15px 5px;  
+    
+}
+   
+ul .info-user .last-message {
+    font-size: 0.8em;
+    color: #B1B1B1;
+}
+
+.info-user{
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+.last-access{
+    color: #B1B1B1;
+}
+  
+.main-chat p {
+    padding: 10px;
+    min-width: 10%;
+    max-width: 40%;
+    word-wrap: break-word;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+  
+.sent p {
+    background-color: #D5F9BA;
+    border-radius: 10px 0 10px 10px;
+}
+  
+.received p {
+    background-color: #FFFFFF;
+    border-radius: 10px 10px 10px 0;
+}
+
+.footer-bar {
+    height: 60px;
+
+}
+  
+.footer-bar i{
+    color: #B1B1B1;
+    font-size: 1.3rem;
+}
+  
+.footer-bar input {
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
