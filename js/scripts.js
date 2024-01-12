@@ -1,3 +1,5 @@
+// inizializzo un oggetto globale luxon
+const time = luxon.DateTime
 
 // Estraggo la funzione createApp dall'oggetto Vue
 const {createApp} = Vue;
@@ -199,7 +201,8 @@ createApp({
 
                 const newMessage = {
                     message: this.inputMessage,
-                    status: 'sent'
+                    status: 'sent',
+                    date: time.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss'),
                 };
               
               //pulisco il campo di input dopo l'invio
@@ -218,7 +221,8 @@ createApp({
             setTimeout(() => {
             const message = {
                 message: 'Ok',
-                status: 'received'
+                status: 'received',
+                date: time.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss'),
                 }
             this.contacts[this.index].messages.push(message);
             }, 1000);
@@ -240,7 +244,15 @@ createApp({
 
         deleteMessage(i){
             this.contacts[this.index].messages.splice(i,1);
-          },
+        },
+
+        formatTime(dateTime) {
+            const formattedDate = time.fromFormat(dateTime, 'dd/MM/yyyy HH:mm:ss', {
+                 locale: 'it' 
+                });
+
+            return formattedDate.toFormat('HH:mm');
+        },
 
     },
    

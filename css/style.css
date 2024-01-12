@@ -52,10 +52,9 @@ img {
     height: 640px;
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
-}
-
-ul {
-    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .notify {
@@ -119,6 +118,10 @@ ul {
     background-color: #F9F9F9;
 }
 
+.active{
+    background-color: #F9F9F9;
+}
+
 .contact-container {
     border-bottom: 2px solid #F9F9F9 ;
     width: 100%;
@@ -141,28 +144,46 @@ ul {
     color: #B1B1B1;
 }
 
-.main-chat p {
-    padding: 10px;
-    min-width: 10%;
-    max-width: 40%;
+.last-message-time {
+    font-size: 0.7em;
+    color: #B1B1B1;
+    margin-left: 5px;
+    justify-content: flex-end;
+}
+
+.main-chat .baloon {
     word-wrap: break-word;
+    white-space: pre-wrap;
+    padding: 10px;
     font-size: 0.8em;
-    margin-bottom: 10px;
+    min-width: 10%;
+    max-width: 50%;
+    margin-bottom: 20px;
+    display: flex;
+
+}
+
+.baloon p {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .sent {
-    justify-content: flex-end;
-    display: flex;
-}
-  
-.sent p {
     background-color: #D5F9BA;
     border-radius: 10px 0 10px 10px;
+    align-self: flex-end;
 }
-  
-.received p {
+ 
+.received {
     background-color: #FFFFFF;
     border-radius: 10px 10px 10px 0;
+    align-self: flex-start;
+}
+
+h6 {
+    font-size: 0.6em;
 }
 
 .footer-bar {
