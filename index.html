@@ -62,8 +62,9 @@
                         <div class="search-bar d-flex align-items-center">
                            
                             <i class="fa-solid fa-magnifying-glass"></i>
-                           
-                            <input v-model="contactSearch" @keyup="search" type="text" placeholder="Cerca o Inizia una nuova chat">
+
+                            <label for="searchInput"></label>
+                            <input id="searchInput" v-model="contactSearch" @keyup="search" type="text" placeholder="Cerca o Inizia una nuova chat">
                 
                         </div>
 
@@ -137,7 +138,7 @@
                                   <li><button class="dropdown-item" type="button">Message info</button></li>
                                   <li @click="deleteMessage(i)"><button class="dropdown-item" type="button">Delete message <i class="fa-solid fa-trash-can"></i></button></li>
                                 </ul>
-                            <h6 class="position-absolute bottom-0 end-0 m-2" :class="text.status">{{ formatTime(text.date) }}</h6>
+                            <h6 class="position-absolute bottom-0 end-0 m-2" :class="text.status">{{ formatTime(text.date) }} <i class="fa-solid fa-check-double"></i></h6>
                         </div>
 
                     </div>
@@ -145,7 +146,8 @@
                     <div class="footer-bar d-flex row align-items-center justify-content-between text-center">
 
                         <i class="fa-regular fa-face-smile col-1 ps-4"></i>
-                        <input v-model="inputMessage" @keyup.enter="newMessage"  type="text" class="p-2 col-10" placeholder="Scrivi un messaggio">
+                        <label for="messageInput" class="d-none"></label>
+                        <input id="messageInput" v-model="inputMessage" @keyup.enter="newMessage"  type="text" class="p-2 col-10" placeholder="Scrivi un messaggio">
                         <i class="fa-solid fa-microphone col-1 "></i>
 
                     </div>
