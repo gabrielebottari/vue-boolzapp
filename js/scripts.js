@@ -220,6 +220,7 @@ createApp({
         index: 0,
         inputMessage: '',
         contactSearch: '',
+        isMessageInputEmpty: true,
 
     }
 
@@ -248,6 +249,9 @@ createApp({
               
             //chiamo a responseMessage() per gestire eventuali risposte automatiche
             this.responseMessage();
+
+            //imposto lo stato dell'input a true quando è vuoto
+            this.isMessageInputEmpty = true;
             }
         },
         
@@ -290,6 +294,11 @@ createApp({
                 });
 
             return formattedDate.toFormat('HH:mm');
+        },
+
+        //funzione per verificare che l'input sia vuoto
+        checkInput() {
+            this.isMessageInputEmpty = this.inputMessage.trim() === '';
         },
 
     },
