@@ -254,22 +254,29 @@ createApp({
             this.isMessageInputEmpty = true;
             }
         },
+
+        //funzione per mandare una risposta asincrona con un API
+        async responseMessage() {
+
+            try {
+                //eseguo una richiesta GET all'API di Boolean per ottenere una frase casuale
+                const result = await axios.get('https://flynn.boolean.careers/exercises/api/random/sentence');
+                
+                //dopo 1 secondo, creo un nuovo messaggio con il testo restituito dall'API
+                setTimeout(() => {
+                    const message = {
+                        message: result.data.response,
+                        status: 'received',
+                        date: time.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss'),
+                    };
         
-        //funzione per stampare un messaggio di risposta
-        responseMessage(){
-
-            //il messaggio dopo 1 secodno verra inviato con status received e con l'orario formattato
-            setTimeout(() => {
-            const message = {
-                message: 'Ok',
-                status: 'received',
-                date: time.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss'),
-                }
-
-            //viene pushato nell'array    
-            this.contacts[this.index].messages.push(message);
-            }, 1000);
-    
+                    this.contacts[this.index].messages.push(message);
+                }, 1000);
+            
+            //gestisco eventuali errori durante la chiamata API
+            } catch (error) {
+                console.error('Errore durante la chiamata API:', error);
+            }
         },
 
         //funzione per cercare tra i contatti
