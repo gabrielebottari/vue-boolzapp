@@ -149,7 +149,7 @@
                         <label for="messageInput" class="d-none"></label>
                         <input id="messageInput" v-model="inputMessage" @keyup.enter="newMessage" @input="checkInput"  type="text" class="p-2 col-10" placeholder="Scrivi un messaggio">
                         <i v-if="isMessageInputEmpty" class="fa-solid fa-microphone col-1 ps-4"></i>
-                        <i v-else class="fa-solid fa-paper-plane col-1 ps-4"></i>
+                        <i v-else class="fa-solid fa-paper-plane col-1 ps-4" @click="newMessage"></i>
 
                     </div>
             
